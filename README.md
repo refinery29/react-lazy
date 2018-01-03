@@ -1,3 +1,7 @@
+# Note on this repo
+
+This is a fork of [Merri/react-lazy](https://github.com/merri/react-lazy).
+
 # react-lazy
 [![Version](http://img.shields.io/npm/v/react-lazy.svg)](https://www.npmjs.org/package/react-lazy)
 [![Build Status](https://travis-ci.org/Merri/react-lazy.svg)](https://travis-ci.org/Merri/react-lazy)
