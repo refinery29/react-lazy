@@ -112,8 +112,8 @@ var Lazy = function (_React$PureComponent) {
                 return _react2.default.createElement(component, props, visible && this.state.loadedAt ? children : null);
             }
 
-            // wrap all contents inside noscript
-            return _react2.default.createElement(component, (0, _wrap.propsWithNoScriptRender)(children, ltIE9, props));
+            // wrap all children inside noscript
+            return (0, _wrap.createElementWithNoScript)(component, props, children, ltIE9);
         }
     }]);
 

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.countTypesTags = countTypesTags;
-exports.propsWithNoScriptRender = propsWithNoScriptRender;
+exports.createElementWithNoScript = createElementWithNoScript;
 exports.wrapTypesToLazyChild = wrapTypesToLazyChild;
 exports.wrapTypesToNoScript = wrapTypesToNoScript;
 
@@ -49,16 +49,32 @@ function countTypesTags(types, children) {
     return count;
 }
 
-function propsWithNoScriptRender(children, ltIE9) {
-    var props = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+function propsWithNoScriptRender(children) {
+    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     var noscript = (0, _server.renderToStaticMarkup)(_react2.default.createElement('noscript', null, children));
 
-    var __html = !ltIE9 ? noscript : noscript.replace('<noscript>', '<!--[if IE 9]><!--><noscript><!--<![endif]-->').replace('</noscript>', '<!--[if IE 9]><!--></noscript><!--<![endif]-->');
+    var __html = noscript.replace('<noscript>', '<!--[if IE 9]><!--><noscript><!--<![endif]-->').replace('</noscript>', '<!--[if IE 9]><!--></noscript><!--<![endif]-->');
 
     props.dangerouslySetInnerHTML = { __html: __html };
 
     return props;
+}
+
+// Creates an element whose children are inside a `<noscript>`
+// ===================================
+// Note: If we support legacy browsers, we don't support passing context
+// through, and vice versa.
+function createElementWithNoScript(type) {
+    var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    var children = arguments[2];
+    var ltIE9 = arguments[3];
+
+    if (ltIE9) {
+        return _react2.default.createElement(type, propsWithNoScriptRender(children, props));
+    }
+
+    return _react2.default.createElement(type, props, _react2.default.createElement('noscript', null, children));
 }
 
 function wrapTypesToLazyChild(types, children, wrapper, callback) {
@@ -97,7 +113,7 @@ function wrapTypesToNoScript(types, children, ltIE9, wrapper) {
         if (!child || child.type === _Lazy2.default || child.type === _LazyGroup2.default || child.type === _LazyChild2.default) {
             return child;
         } else if (types.includes(child.type)) {
-            return _react2.default.createElement(wrapper, propsWithNoScriptRender(child, ltIE9));
+            return createElementWithNoScript(wrapper, {}, child, ltIE9);
         } else {
             var props = child.props || child._store && child._store.props || {};
             var _children2 = wrapTypesToNoScript(types, props.children, ltIE9, wrapper);

@@ -24,16 +24,39 @@ export function countTypesTags(types, children, count = 0) {
     return count
 }
 
-export function propsWithNoScriptRender(children, ltIE9, props = {}) {
+function propsWithNoScriptRender(children, props = {}) {
     const noscript = renderToStaticMarkup(React.createElement('noscript', null, children))
 
-    const __html = !ltIE9 ? noscript : noscript
+    const __html = noscript
         .replace('<noscript>', '<!--[if IE 9]><!--><noscript><!--<![endif]-->')
         .replace('</noscript>', '<!--[if IE 9]><!--></noscript><!--<![endif]-->')
 
     props.dangerouslySetInnerHTML = { __html }
 
     return props
+}
+
+// Creates an element whose children are inside a `<noscript>`
+// ===================================
+// Note: If we support legacy browsers, we don't support passing context
+// through, and vice versa.
+export function createElementWithNoScript(type, props = {}, children, ltIE9) {
+    if (ltIE9) {
+        return React.createElement(
+            type,
+            propsWithNoScriptRender(children, props)
+        )
+    }
+
+    return React.createElement(
+        type,
+        props,
+        React.createElement(
+            'noscript',
+            null,
+            children
+        )
+    )
 }
 
 export function wrapTypesToLazyChild(types, children, wrapper, callback) {
@@ -70,7 +93,7 @@ export function wrapTypesToNoScript(types, children, ltIE9, wrapper) {
         if (!child || child.type === Lazy || child.type === LazyGroup || child.type === LazyChild) {
             return child
         } else if (types.includes(child.type)) {
-            return React.createElement(wrapper, propsWithNoScriptRender(child, ltIE9))
+            return createElementWithNoScript(wrapper, {}, child, ltIE9)
         } else {
             const props = child.props || (child._store && child._store.props) || {}
             const children = wrapTypesToNoScript(types, props.children, ltIE9, wrapper)

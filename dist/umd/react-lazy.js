@@ -1,4 +1,4 @@
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react"),require("prop-types"),require("react-dom/server")):"function"==typeof define&&define.amd?define(["react","prop-types","react-dom/server"],t):"object"==typeof exports?exports.ReactLazy=t(require("react"),require("prop-types"),require("react-dom/server")):e.ReactLazy=t(e.React,e.PropTypes,e.ReactDOMServer)}(this,function(e,t,n){return function(e){function t(o){if(n[o])return n[o].exports
+!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t(require("react"),require("prop-types"),require("react-dom/server")):"function"==typeof define&&define.amd?define(["react","prop-types","react-dom/server"],t):"object"==typeof exports?exports.ReactLazy=t(require("react"),require("prop-types"),require("react-dom/server")):e.ReactLazy=t(e.React,e.PropTypes,e.ReactDOMServer)}("undefined"!=typeof self?self:this,function(e,t,n){return function(e){function t(o){if(n[o])return n[o].exports
 var r=n[o]={i:o,l:!1,exports:{}}
 return e[o].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={}
 return t.m=e,t.c=n,t.d=function(e,n,o){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:o})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e}
@@ -16,7 +16,7 @@ var n=l(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e))
 return n.state={loadedAt:null},n.getRef=n.getRef.bind(n),n.onViewport=n.onViewport.bind(n),n}return a(t,e),f(t,[{key:"componentDidMount",value:function(){this.options={callback:this.onViewport,cushion:this.props.cushion,element:this.el},(0,y.addElement)(this.options)}},{key:"componentWillReceiveProps",value:function(e){e.cushion!==this.props.cushion&&(this.options.cushion=e.cushion)}},{key:"componentWillUnmount",value:function(){(0,y.removeElement)(this.options),delete this.options}},{key:"getRef",value:function(e){this.el=e}},{key:"onViewport",value:function(){var e=this.props,t=e.onLoad,n=e.onViewport
 if(!e.visible)return!1
 n&&n(),this.setState({loadedAt:Date.now()},t)}},{key:"render",value:function(){var e=this.props,t=e.children,n=e.component,o=(e.cushion,e.jsOnly),i=e.ltIE9,l=e.visible,a=(e.onLoad,e.onViewport,r(e,["children","component","cushion","jsOnly","ltIE9","visible","onLoad","onViewport"])),u=c({},a,{ref:this.getRef})
-return o||l&&this.state.loadedAt?s.default.createElement(n,u,l&&this.state.loadedAt?t:null):s.default.createElement(n,(0,b.propsWithNoScriptRender)(t,i,u))}}]),t}(s.default.PureComponent)
+return o||l&&this.state.loadedAt?s.default.createElement(n,u,l&&this.state.loadedAt?t:null):(0,b.createElementWithNoScript)(n,u,t,i)}}]),t}(s.default.PureComponent)
 v.defaultProps={component:"div",cushion:0,jsOnly:!1,ltIE9:!1,visible:!0},v.propTypes={children:h.default.node,component:h.default.oneOfType([h.default.string,h.default.object,h.default.func]),cushion:h.default.number,jsOnly:h.default.bool,ltIE9:h.default.bool,onLoad:h.default.func,onViewport:h.default.func,visible:h.default.bool},t.default=v},function(e,t,n){"use strict"
 function o(e,t){var n=e.bottom+t,o=e.left-t,r=e.right+t,i=e.top-t
 return{bottom:n,left:o,right:r,top:i,height:n-i,width:r-o}}function r(e,t){return!(!(e=e&&!e.nodeType?e[0]:e)||1!==e.nodeType)&&o(e.getBoundingClientRect(),t)}function i(){return{height:Math.max(document.documentElement.clientHeight,window.innerHeight),width:Math.max(document.documentElement.clientWidth,window.innerWidth)}}function l(e,t){var n=e.cushion,o=e.element
@@ -68,15 +68,16 @@ this.setState({imgTagCount:i,loadedAt:i?null:l,viewportAt:l},i?null:o)}},{key:"r
 return s.default.createElement(i,p,l||u&&this.state.viewportAt?(0,y.wrapTypesToLazyChild)(n,t,o,this.onImgLoaded):(0,y.wrapTypesToNoScript)(n,t,a,o))}}]),t}(w.default)
 O.defaultProps=c({},w.default.defaultProps,{childrenToWrap:["iframe","img"],childWrapper:v.default}),O.propTypes=c({},w.default.propTypes,{childrenToWrap:h.default.arrayOf(w.default.propTypes.component),childWrapper:h.default.oneOfType([h.default.object,h.default.func])}),t.default=O},function(e,t,n){"use strict"
 function o(e){return e&&e.__esModule?e:{default:e}}function r(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:0
-return t?(c.default.Children.forEach(t,function(t){if(t&&t.type!==s.default&&t.type!==b.default&&t.type!==h.default)if(e.includes(t.type))n++
+return t?(f.default.Children.forEach(t,function(t){if(t&&t.type!==d.default&&t.type!==v.default&&t.type!==y.default)if(e.includes(t.type))n++
 else{var o=t.props||t._store&&t._store.props||{}
-n+=r(e,o.children)}}),n):n}function i(e,t){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},o=(0,f.renderToStaticMarkup)(c.default.createElement("noscript",null,e)),r=t?o.replace("<noscript>","\x3c!--[if IE 9]>\x3c!--\x3e<noscript>\x3c!--<![endif]--\x3e").replace("</noscript>","\x3c!--[if IE 9]>\x3c!--\x3e</noscript>\x3c!--<![endif]--\x3e"):o
-return n.dangerouslySetInnerHTML={__html:r},n}function l(e,t,n,o){return t?c.default.Children.map(t,function(t){if(t&&t.type!==s.default&&t.type!==b.default&&t.type!==h.default){if(e.includes(t.type))return c.default.createElement(h.default,{callback:o,wrapper:n},t)
-var r=t.props||t._store&&t._store.props||{},i=l(e,r.children,n,o)
-return i!==r.children?c.default.cloneElement(t,null,i):t}return t}):t}function a(e,t,n,o){return t?c.default.Children.map(t,function(t){if(t&&t.type!==s.default&&t.type!==b.default&&t.type!==h.default){if(e.includes(t.type))return c.default.createElement(o,i(t,n))
-var r=t.props||t._store&&t._store.props||{},l=a(e,r.children,n,o)
-return l!==r.children?c.default.cloneElement(t,null,l):t}return t}):t}Object.defineProperty(t,"__esModule",{value:!0}),t.countTypesTags=r,t.propsWithNoScriptRender=i,t.wrapTypesToLazyChild=l,t.wrapTypesToNoScript=a
-var u=n(0),c=o(u),f=n(10),p=n(2),s=o(p),d=n(5),h=o(d),y=n(6),b=o(y)},function(e,t,n){"use strict"
+n+=r(e,o.children)}}),n):n}function i(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n=(0,p.renderToStaticMarkup)(f.default.createElement("noscript",null,e)),o=n.replace("<noscript>","\x3c!--[if IE 9]>\x3c!--\x3e<noscript>\x3c!--<![endif]--\x3e").replace("</noscript>","\x3c!--[if IE 9]>\x3c!--\x3e</noscript>\x3c!--<![endif]--\x3e")
+return t.dangerouslySetInnerHTML={__html:o},t}function l(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},n=arguments[2]
+return arguments[3]?f.default.createElement(e,i(n,t)):f.default.createElement(e,t,f.default.createElement("noscript",null,n))}function a(e,t,n,o){return t?f.default.Children.map(t,function(t){if(t&&t.type!==d.default&&t.type!==v.default&&t.type!==y.default){if(e.includes(t.type))return f.default.createElement(y.default,{callback:o,wrapper:n},t)
+var r=t.props||t._store&&t._store.props||{},i=a(e,r.children,n,o)
+return i!==r.children?f.default.cloneElement(t,null,i):t}return t}):t}function u(e,t,n,o){return t?f.default.Children.map(t,function(t){if(t&&t.type!==d.default&&t.type!==v.default&&t.type!==y.default){if(e.includes(t.type))return l(o,{},t,n)
+var r=t.props||t._store&&t._store.props||{},i=u(e,r.children,n,o)
+return i!==r.children?f.default.cloneElement(t,null,i):t}return t}):t}Object.defineProperty(t,"__esModule",{value:!0}),t.countTypesTags=r,t.createElementWithNoScript=l,t.wrapTypesToLazyChild=a,t.wrapTypesToNoScript=u
+var c=n(0),f=o(c),p=n(10),s=n(2),d=o(s),h=n(5),y=o(h),b=n(6),v=o(b)},function(e,t,n){"use strict"
 function o(e){return e&&e.__esModule?e:{default:e}}Object.defineProperty(t,"__esModule",{value:!0}),t.Lazy=t.LazyGroup=t.LazyChild=t.DefaultWrapper=t.checkElementsInViewport=void 0
 var r=n(3)
 Object.defineProperty(t,"checkElementsInViewport",{enumerable:!0,get:function(){return r.checkElementsInViewport}})

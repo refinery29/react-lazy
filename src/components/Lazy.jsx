@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { addElement, removeElement } from '../lib/viewport'
-import { propsWithNoScriptRender } from '../lib/wrap'
+import { createElementWithNoScript } from '../lib/wrap'
 
 class Lazy extends React.PureComponent {
     constructor(props) {
@@ -61,8 +61,8 @@ class Lazy extends React.PureComponent {
             return React.createElement(component, props, visible && this.state.loadedAt ? children : null)
         }
 
-        // wrap all contents inside noscript
-        return React.createElement(component, propsWithNoScriptRender(children, ltIE9, props))
+        // wrap all children inside noscript
+        return createElementWithNoScript(component, props, children, ltIE9)
     }
 }
 

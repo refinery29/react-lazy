@@ -123,6 +123,11 @@ give minimally acceptable user experience to users of browsers that should be de
 
 This means there is no lazy rendering on legacy browsers, images load immediately.
 
+**Note:** If this option is enabled, then children will not receive [context](https://reactjs.org/docs/context.html)
+from their parents. This is a consequence of the workaround we use to "hide" the `<noscript> tags for older browsers,
+which relies on an isolated `renderToStaticMarkup` call. If your child components rely on context and you must use
+`ltIE9`, consider refactoring them to receive props from their parent instead.
+
 
 ### `onLoad`
 
