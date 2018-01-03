@@ -1,7 +1,7 @@
 {
-  "name": "react-lazy",
+  "name": "@r29/react-lazy",
   "version": "0.5.1",
-  "description": "Universal lazy loader component: SEO, no-JS and legacy browser friendly",
+  "description": "(Fork of Merri/react-lazy) Universal lazy loader component: SEO, no-JS and legacy browser friendly",
   "main": "dist/module/index.js",
   "scripts": {
     "build": "npm run clean-dist && npm run build-modules && npm run build-umd",
