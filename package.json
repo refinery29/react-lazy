@@ -1,6 +1,6 @@
 {
   "name": "@r29/react-lazy",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "(Fork of Merri/react-lazy) Universal lazy loader component: SEO, no-JS and legacy browser friendly",
   "main": "dist/module/index.js",
   "scripts": {
