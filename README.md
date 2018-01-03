@@ -3,7 +3,7 @@
 This is a fork of [Merri/react-lazy](https://github.com/merri/react-lazy).
 
 Changes specific to this fork:
-  * Fixed bug where context was not being passed down to children. (18d26fe802ac528968e695393deca1d91f4a62aa)
+  * Fixed bug where context was not being passed down to children. (https://github.com/refinery29/react-lazy/commit/18d26fe802ac528968e695393deca1d91f4a62aa)
     - Note: if `ltIE9` is set to `true`, context still won't be passed down.
 
 # react-lazy
