@@ -2,6 +2,10 @@
 
 This is a fork of [Merri/react-lazy](https://github.com/merri/react-lazy).
 
+Changes specific to this fork:
+  * Fixed bug where context was not being passed down to children. (18d26fe802ac528968e695393deca1d91f4a62aa)
+    - Note: if `ltIE9` is set to `true`, context still won't be passed down.
+
 # react-lazy
 [![Version](http://img.shields.io/npm/v/react-lazy.svg)](https://www.npmjs.org/package/react-lazy)
 [![Build Status](https://travis-ci.org/Merri/react-lazy.svg)](https://travis-ci.org/Merri/react-lazy)
