@@ -5,6 +5,8 @@ This is a fork of [Merri/react-lazy](https://github.com/merri/react-lazy).
 Changes specific to this fork:
   * Fixed bug where context was not being passed down to children. (https://github.com/refinery29/react-lazy/commit/18d26fe802ac528968e695393deca1d91f4a62aa)
     - Note: if `ltIE9` is set to `true`, context still won't be passed down.
+    
+*Update 2/6/18:* **Please do not use this fork in production yet.** Deploying it caused frontend load times to increase by almost 2x. It turns out the solution in [18d26fe802ac528968e695393deca1d91f4a62aa](https://github.com/refinery29/react-lazy/commit/18d26fe802ac528968e695393deca1d91f4a62aa) heavily impacts performance. We're keeping this repo up just for future reference as to how we fixed the context bug -- perhaps we can the performance issues associated with it down the line. See: https://refinery29.atlassian.net/browse/ME-736
 
 # react-lazy
 [![Version](http://img.shields.io/npm/v/react-lazy.svg)](https://www.npmjs.org/package/react-lazy)
